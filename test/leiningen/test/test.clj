@@ -1,4 +1,5 @@
-(ns leiningen.test.test
+(ns leiningen.test.test 
+  "Testing generalized test suite behavior"
   (:refer-clojure :exclude [test])
   (:require [clojure.test :refer :all]
             [leiningen.test :refer :all]

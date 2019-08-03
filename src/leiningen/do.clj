@@ -3,10 +3,10 @@
   (:refer-clojure :exclude [do])
   (:require [leiningen.core.main :as main]))
 
-(defn- conj-to-last [coll x]
+  (defn- conj-to-last [coll x]
   (update-in coll [(dec (count coll))] conj x))
 
-(defn- butlast-char
+(defn- without-last-char
   "Removes the last character in the string."
   [s]
   (subs s 0 (dec (count s))))
@@ -25,7 +25,7 @@
      (cond (coll? arg) (-> (pop-if-last groups empty?)
                            (conj arg []))
            (.endsWith arg ",") (-> groups
-                                   (conj-to-last (butlast-char arg))
+                                   (conj-to-last (without-last-char arg))
                                    (conj []))
            :else (conj-to-last groups arg))))
 

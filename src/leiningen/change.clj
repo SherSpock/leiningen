@@ -104,7 +104,8 @@
        first))
 
 (defn- parse-project [project-str]
-  (-> (parser/parser project-str)
+  (-> project-str
+      parser/parser 
       zip/xml-zip
       find-defproject
       (or (fail-argument! "Project definition not found"))
